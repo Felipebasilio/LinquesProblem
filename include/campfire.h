@@ -4,26 +4,26 @@
 #include <vector>
 #include <string>
 
-// Estrutura para representar conexões para outras clareiras
 struct Connection {
-    std::string name;  // Nome/ID da clareira de destino
-    int weight;        // Peso da trilha, 0 para portal
+    std::string from;  // Vértice de origem
+    std::string to;    // Vértice de destino
+    double weight;     // Peso da conexão
 };
 
-// Classe que representa uma clareira
 class Campfire {
 public:
-    Campfire(const std::string& name, double x, double y);
-    void addConnection(const std::string& name, int weight);
+    Campfire(const std::string& name, double x, double y);  // Construtor atualizado
+
+    void addConnection(const std::string& to, double weight);
     std::string getName() const;
     std::vector<Connection> getConnections() const;
-    double getX() const;
-    double getY() const;
+    double getX() const;  // Getter para X
+    double getY() const;  // Getter para Y
 
 private:
-    std::string name;               // Nome/ID da clareira
+    std::string name;                      // Nome/ID da clareira
     std::vector<Connection> connections;  // Conexões a outras clareiras
-    double x, y;                    // Coordenadas da clareira no plano
+    double x, y;                           // Coordenadas da clareira
 };
 
 #endif // CAMPFIRE_H
